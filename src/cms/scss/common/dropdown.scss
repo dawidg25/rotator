@@ -1,0 +1,46 @@
+@import '../common';
+.dd-wrapper{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    .dd-header {
+        display: flex;
+        cursor: pointer;
+        div {
+            margin-left: 3px;
+            margin-right: 3px;
+            &:first-child {
+                margin-left: 0;
+            }
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+    .dd-list {
+        position: absolute;
+        right: 0;
+        list-style-type: none;
+        padding-left: 0;
+        color: #000;
+        width: max-content;
+        margin: 0;
+        text-align: left;
+        background: #fff;
+        padding: 3px 0;
+        border: 1px solid #d7d7d7;
+        border-radius: 3px;
+        li {
+            cursor: pointer;
+            padding: 3px 10px;
+            &:hover {
+                background: #e8e8e8;
+            }
+        }
+    }
+    svg {
+        position: relative;
+        z-index: 10;
+    }
+}

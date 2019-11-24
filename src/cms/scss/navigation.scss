@@ -1,0 +1,21 @@
+@import './common';
+
+section.navigation {
+    background: $btnBg;
+    width: $navigationWidth;
+    a {
+        text-align: center;
+        font-size: 28px;
+        padding: 8px 0;
+        color: #fff;
+        transition: all 0.3s ease;
+        display: block;
+        &:hover {
+            background: darken($btnBg, 5);
+        }
+
+        &.selected {
+            background: darken($btnBg, 5);
+        }
+    }
+}

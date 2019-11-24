@@ -1,0 +1,37 @@
+$mainFontColor: #000;
+$mainFontSize: 16px;
+
+//na pewno przydatne
+$btnBg: #39323e;
+$containerBackgroundColor: #ececec;
+$subContainerBackgroundColor: #fff;
+$subContainerBorderColor: #c5c5c5;
+
+$mainBgColor: #39323e;
+$mainBgColorDarken: darken($mainBgColor, 5);
+
+
+$navigationWidth: 80px;
+
+$borderColor: #d7d7d7;
+
+$errorColor: #c40027;
+$warningColor: #dba41a;
+$infoColor: #033da6;
+$successColor: #1da836;
+
+@mixin buttonStyle {
+    font-family: 'Roboto', 'sans-serif';
+    border: none;
+    border-radius: 20px;
+    background: $btnBg;
+    color: #fff;
+    padding: 9px 35px;
+    font-size: 14px;
+    margin: 10px 0;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    display: inline-block;
+} 

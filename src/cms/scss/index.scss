@@ -1,0 +1,107 @@
+@import './common';
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: #fff;
+    color: $mainFontColor;
+    font-size: $mainFontSize;   
+    min-height: 100vh;
+}
+#root {
+    min-height: 100vh;
+    position: relative;
+}
+p {
+    margin: 0;
+}
+a {
+    outline: none;
+}
+
+.container {
+    width: calc(100% - #{$navigationWidth});
+    box-sizing: border-box;
+    background: $containerBackgroundColor;
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+}
+.sub-container {
+    margin: 15px;
+    background: $subContainerBackgroundColor;
+    border: 1px solid $subContainerBorderColor;
+    box-sizing: border-box;
+    padding: 20px;
+    position: relative;
+    h2 {
+        line-height: 80%;
+        margin-top: 0;
+        margin-bottom: 15px;
+    }
+}
+/**
+* Button
+*/
+button {
+    @include buttonStyle;
+}
+.btn {
+    @include buttonStyle;
+}
+
+
+.hidden {display: none;}
+/**
+* Input
+*/
+.form-group {
+    input {
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid $borderColor;
+        color: black;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 30px;
+        font-size: $mainFontSize;
+        padding-bottom: 5px;
+    }
+    .icon {
+        position: absolute;
+        left: 5px;
+    }
+    svg {
+        color: black;
+    }
+    .toggle-password {
+        position: absolute;
+        right: 5px;
+        top: 15px;
+        cursor: pointer;
+    }
+    .error {
+        font-size: 12px;
+        text-align: left;
+        color: black;
+        padding-top: 4px;
+        position: absolute;
+        left: 0;
+        bottom: -6px;
+        &::before {
+            content: '';
+            width: 5px;
+            height: 5px;
+            display: inline-block;
+            background: black;
+            border-radius: 3px;
+            margin-bottom: 2px;
+            margin-right: 5px;
+        }
+    }
+}
+
+section.cms {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 100vh;
+}
