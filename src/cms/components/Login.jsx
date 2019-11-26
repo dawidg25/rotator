@@ -30,7 +30,7 @@ class Login extends Component {
                                         errors={this.props.errors[input.name]}
                                     />
                         })}
-                        <button className='form-send' type='submit'>Signup</button>
+                        <button className='form-send' type='submit'>Login</button>
                     </form> 
                 </div>
             </section>

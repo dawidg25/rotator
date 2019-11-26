@@ -16,9 +16,12 @@ const UserController = require('./api/user/UserController');
 const AuthController = require('./api/auth/AuthController');
 const OtherController = require('./api/other/OtherController');
 
+const TomeController = require('./api/tome/TomeController');
+
 app.use('/api/user', UserController);
 app.use('/api/auth', AuthController);
 app.use('/api/other', OtherController);
+app.use('/api/tome', TomeController);
 
 
 app.get('*', (req, res) => {

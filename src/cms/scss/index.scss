@@ -55,6 +55,13 @@ button {
 * Input
 */
 .form-group {
+    display: flex;
+    margin: 6px 0;
+    position: relative;
+    label {
+        margin-right: 8px;
+        width: 120px;
+    }
     input {
         background: transparent;
         border: none;
@@ -62,9 +69,8 @@ button {
         color: black;
         width: 100%;
         box-sizing: border-box;
-        padding: 0 30px;
+        padding: 0 5px;
         font-size: $mainFontSize;
-        padding-bottom: 5px;
     }
     .icon {
         position: absolute;
@@ -78,6 +84,41 @@ button {
         right: 5px;
         top: 15px;
         cursor: pointer;
+    }
+    .error {
+        font-size: 12px;
+        text-align: left;
+        color: #fff;
+        padding: 5px;
+        background: #3e3e3e;
+        position: absolute;
+        left: calc(100% + 15px);
+        bottom: -6px;
+        white-space: nowrap;
+        &::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            display: inline-block;
+            background: #3e3e3e;
+            margin-bottom: 2px;
+            margin-right: 5px;
+            transform: rotate(45deg);
+            position: absolute;
+            left: -4px;
+            top: 8px;
+        }
+    }
+}
+button[type="submit"] {
+    display: block;
+    margin: 0 auto;
+    margin-top: 25px;
+}
+section.login-register {
+    input {
+        padding: 0 30px;
+        padding-bottom: 5px;
     }
     .error {
         font-size: 12px;
@@ -99,7 +140,6 @@ button {
         }
     }
 }
-
 section.cms {
     display: flex;
     flex-wrap: wrap;

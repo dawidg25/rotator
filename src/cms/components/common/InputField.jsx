@@ -21,6 +21,9 @@ export default class InputField extends Component {
     render() {
         return (
             <div className='form-group'>
+                {this.props.label &&
+                    <label htmlFor={this.props.name}>{this.props.label}</label>
+                }
                 {this.props.icon &&
                     <div className='icon'>
                         <FontAwesomeIcon icon={this.props.icon} />
