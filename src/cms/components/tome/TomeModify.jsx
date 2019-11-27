@@ -5,6 +5,8 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import auth from '../../../lib/Auth';
 import notification from '../../lib/Notification';
+import {withRouter} from 'react-router-dom';
+import {compose} from 'redux';
 
 const formFields = [
     {type: 'text', name: 'title', label: 'Title'},
@@ -18,7 +20,9 @@ class TomeModify extends Component {
             isNew: false,
         }
     }
-    
+    cancelHandler = () => {
+       this.props.history.push('/cms/tome');
+    }
     render() {
         return (
             <section className="tome-modify container">
@@ -36,14 +40,17 @@ class TomeModify extends Component {
                                 errors={this.props.errors[input.name]}
                             />
                         })}
-                        <button type="submit">Save</button>
+                        <div className="action">
+                            <button className="cancel" onClick={this.cancelHandler}>Cancel</button>
+                            <button type="submit">Save</button>    
+                        </div>
                     </form>
                 </div>
             </section>
         )
     }
 }
-export default withFormik({
+export default compose(withRouter, withFormik({
     mapPropsToValues: () => ({
         title: '',
         url: ''
@@ -52,11 +59,7 @@ export default withFormik({
         title: Yup.string().required(),
         url: Yup.string().required().trim()
     }),
-    handleSubmit: (values) => {
-        console.log(
-            values.title,
-            values.url
-        )
+    handleSubmit: (values, {props}) => {
         axios.post('/api/tome',
             {
                 title: values.title,
@@ -69,8 +72,10 @@ export default withFormik({
             }
         ).then(res => {
             notification.create('New tome is created', 'success');
+            props.history.push('/cms/tome');
+
         }).catch(error => {
-            notification.create('There is a problem with creating new tome', 'error');
+            auth.verifyError(error);
         })
     }
-})(TomeModify);
+}))(TomeModify);

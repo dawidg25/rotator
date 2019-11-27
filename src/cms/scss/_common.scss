@@ -35,4 +35,11 @@ $successColor: #1da836;
     text-decoration: none;
     display: inline-block;
     outline: none;
+    &::-moz-focus-inner {
+        border: 0;
+    }
+    &.cancel {
+        background: #919191;
+
+    }
 } 

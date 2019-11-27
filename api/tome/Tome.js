@@ -13,15 +13,13 @@ const TomeSchema = new mongoose.Schema({
 
 TomeSchema.path('url').validate(async function(value) {
     let isUnique = true;
-
-    await this.model('Tome').countDocuments({ url: value }, function(err, count) {
-        if (err || count) {
+    await this.model('Tome').countDocuments({url: value}).then(count => {        
+        if(count > 0) {
             isUnique = false;
-        } 
-    });
-
-    console.log(isUnique);
+        }
+    })
     return isUnique;
+
 }, 'Url already exists');
 
 mongoose.model('Tome', TomeSchema);

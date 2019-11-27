@@ -36,7 +36,7 @@ a {
     h2 {
         line-height: 80%;
         margin-top: 0;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
     }
 }
 /**
@@ -110,38 +110,24 @@ button {
         }
     }
 }
-button[type="submit"] {
-    display: block;
-    margin: 0 auto;
-    margin-top: 25px;
-}
 section.login-register {
     input {
         padding: 0 30px;
         padding-bottom: 5px;
     }
     .error {
-        font-size: 12px;
-        text-align: left;
-        color: black;
-        padding-top: 4px;
-        position: absolute;
-        left: 0;
-        bottom: -6px;
-        &::before {
-            content: '';
-            width: 5px;
-            height: 5px;
-            display: inline-block;
-            background: black;
-            border-radius: 3px;
-            margin-bottom: 2px;
-            margin-right: 5px;
-        }
+        bottom: unset;
     }
 }
 section.cms {
     display: flex;
     flex-wrap: wrap;
     min-height: 100vh;
+}
+form {
+    .action {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 25px;
+    }
 }
