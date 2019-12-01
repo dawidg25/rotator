@@ -22,10 +22,19 @@ router.post('/', authToken, (req, res) => {
         res.status(ret.status).json(ret);
     });
 })
-router.delete('/', (req, res) => {
-    Tome.deleteMany({}).then( ok => {
-        res.status(200).json(ok);
+// router.delete('/', (req, res) => {
+//     Tome.deleteMany({}).then( ok => {
+//         res.status(200).json(ok);
+//     })
+// })
+
+router.get('/', (req, res) => {
+    Tome.find({}).then(doc => {
+        let ret = {
+            status: 200,
+            document: doc
+        };
+        res.status(ret.status).json(ret);
     })
 })
-
 module.exports = router;

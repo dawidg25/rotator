@@ -25,9 +25,9 @@ a {
     display: flex;
     align-items: flex-start;
     position: relative;
+    padding: 15px;
 }
 .sub-container {
-    margin: 15px;
     background: $subContainerBackgroundColor;
     border: 1px solid $subContainerBorderColor;
     box-sizing: border-box;
@@ -38,6 +38,10 @@ a {
         margin-top: 0;
         margin-bottom: 20px;
     }
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
 }
 /**
 * Button

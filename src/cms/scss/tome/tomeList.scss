@@ -1,0 +1,17 @@
+section.tome-list {
+    width: 100%;
+    height: 100%;
+    .top-row{
+        font-weight: 500;
+        font-size: 95%;
+    }
+    .title {
+        width: 40%;
+    }
+    .url {
+        width: 40%;
+    }
+    .created {
+        width: 20%;
+    }
+}
