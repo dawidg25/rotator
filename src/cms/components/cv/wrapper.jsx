@@ -1,9 +1,14 @@
 import React, {Component} from 'react';
-import {PDFViewer, Page, Text, View, Document, StyleSheet, Font} from '@react-pdf/renderer';
+import {PDFViewer, Page, Document, StyleSheet, Font} from '@react-pdf/renderer';
 import '../../scss/vitae.scss'
 
 import Header from './header';
 import Profile from './profile';
+import Contact from './contact';
+import Skills from './skills';
+import Education from './education';
+
+import commonStyles from './commonStyles';
 
 import RobotoRegular from '../../assets/cv/Roboto-Regular.ttf';
 import RobotoBold from '../../assets/cv/Roboto-Bold.ttf';
@@ -31,6 +36,9 @@ export default class Vitae extends Component {
                         <Page size="A4" style={styles.page}>
                             <Header />
                             <Profile />
+                            <Contact />
+                            <Skills />
+                            <Education />
                         </Page>
                     </Document>
                 </PDFViewer>

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, Image, StyleSheet, Font} from '@react-pdf/renderer';
+import {Text, View, Image, StyleSheet} from '@react-pdf/renderer';
 
 import cvImage from '../../assets/cv/cv.jpg';
 
