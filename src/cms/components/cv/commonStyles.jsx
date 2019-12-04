@@ -16,13 +16,20 @@ const styles = StyleSheet.create({
         fontSize: 18
     },
     content: {
-        paddingTop: 15,
-        paddingBottom: 15,
+        paddingTop: 23,
+        paddingBottom: 23,
         paddingLeft: 30,
         paddingRight: 30,
     },
     row: {
         flexDirection: 'row'
+    },
+    mark: {
+        width: 7,
+        height: 7,
+        marginRight: 8,
+        marginTop: 7,
+        backgroundColor: '#31333F'
     }
 })
 export default styles;

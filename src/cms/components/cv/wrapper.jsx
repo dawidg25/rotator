@@ -3,12 +3,11 @@ import {PDFViewer, Page, Document, StyleSheet, Font} from '@react-pdf/renderer';
 import '../../scss/vitae.scss'
 
 import Header from './header';
-import Profile from './profile';
 import Contact from './contact';
 import Skills from './skills';
 import Education from './education';
-
-import commonStyles from './commonStyles';
+import Experience from './experience';
+import Clause from './clause';
 
 import RobotoRegular from '../../assets/cv/Roboto-Regular.ttf';
 import RobotoBold from '../../assets/cv/Roboto-Bold.ttf';
@@ -35,10 +34,11 @@ export default class Vitae extends Component {
                     <Document title="Curriculum Vitae" author='Dawid Górszczyk' creator='Dawid Górszczyk'>
                         <Page size="A4" style={styles.page}>
                             <Header />
-                            <Profile />
                             <Contact />
                             <Skills />
+                            <Experience />
                             <Education />
+                            <Clause />
                         </Page>
                     </Document>
                 </PDFViewer>

@@ -27,22 +27,22 @@ const styles = StyleSheet.create({
     }
 
 })
-export default class Education extends Component {
+export default class Experience extends Component {
     render() {
         return (
             <View style={commonStyles.wrapper}>
                 <View style={commonStyles.bar}>
-                    <Text style={commonStyles.barText}>Wykształcenie</Text>
+                    <Text style={commonStyles.barText}>Doświadczenie zawodowe</Text>
                 </View>
                 <View style={commonStyles.content}>
                     <View style={styles.column}>
                         <View style={styles.row}>
                             <View style={commonStyles.mark}></View>
-                            <Text style={styles.years}>2012 - 2016</Text>
+                            <Text style={styles.years}>2018 - teraz</Text>
                         </View>
                         <View style={styles.withMargin}>
-                            <Text style={styles.title}>Państwowa Wyższa Szkoła Zawodowa w Nowym Sączu</Text>
-                            <Text style={styles.grade}>inż. informatyk</Text>
+                            <Text style={styles.title}>Extremelab.pl</Text>
+                            <Text style={styles.grade}>Fullstack Web Developer</Text>
                             {/* <Text>opis...</Text> */}
                         </View>
                     </View>

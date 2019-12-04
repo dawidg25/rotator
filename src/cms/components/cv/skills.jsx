@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Text, View, StyleSheet} from '@react-pdf/renderer';
-
 import commonStyles from './commonStyles';
 
 const struct = [
@@ -37,7 +36,9 @@ const styles = StyleSheet.create({
         paddingRight: 20
     },
     row: {
-        flexDirection: 'row'
+        flexDirection: 'row',
+        paddingTop: 2,
+        paddingBottom: 2
     },
     mark: {
         width: 7,
