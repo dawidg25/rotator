@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import '../../scss/tome/tomeList.scss';
+import './tomeList.scss';
 import '../common/Loader';
 import Loader from '../common/Loader';
 import TomeListContent from './TomeListContent';
@@ -34,6 +34,7 @@ export default class TomeList extends Component {
                     <div className="title"><span>Title</span></div>
                     <div className="url"><span>Url</span></div>
                     <div className="created"><span>Created</span></div>
+                    <div className="action"></div>
                 </div>
                     {this.state.isLoaded ?
                         <TomeListContent data={this.state.documents} />

@@ -1,4 +1,4 @@
-@import '../common';
+@import '../../scss/common';
 section.profile {
     width: min-content;
     margin: 0 auto;
@@ -19,6 +19,9 @@ section.profile {
             &::before {
                 display: block;
             }
+        }
+        svg: {
+            color: #fff;
         }
     }
     .dd-header-icon {

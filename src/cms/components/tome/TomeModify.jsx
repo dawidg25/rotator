@@ -9,7 +9,7 @@ import {withRouter} from 'react-router-dom';
 import {compose} from 'redux';
 
 const formFields = [
-    {type: 'text', name: 'title', label: 'Title'},
+    {type: 'text', name: 'title', label: 'Title', value: 'asdf'},
     {type: 'text', name: 'url', label: 'Url'},
 ]
 
@@ -17,12 +17,24 @@ class TomeModify extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isNew: false,
+            isNew: this.props.match.params.id === undefined
         }
+        this.id = this.state.isNew ? null : this.props.match.params.id;
+        this.data = null
     }
     cancelHandler = () => {
-       this.props.history.push('/cms/tome');
+        this.props.history.push('/cms/tome');
     }
+
+    componentDidMount () {
+        if (!this.state.isNew) {
+            axios.get(`/api/tome/${this.id}`).then(res => {
+                this.data = res.data.document;
+                console.log(this.data);
+            })
+        }
+    }
+
     render() {
         return (
             <section className="tome-modify container">
@@ -51,10 +63,12 @@ class TomeModify extends Component {
     }
 }
 export default compose(withRouter, withFormik({
-    mapPropsToValues: () => ({
-        title: '',
-        url: ''
-    }),
+    mapPropsToValues: () => ( 
+        {
+            title: this.data.title,
+            url: ''
+        }
+    ),
     validationSchema: Yup.object().shape({
         title: Yup.string().required(),
         url: Yup.string().required().trim()

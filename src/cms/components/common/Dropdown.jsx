@@ -3,7 +3,7 @@ import listensToClickOutside from 'react-onclickoutside';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faAngleDown, faAngleUp} from '@fortawesome/free-solid-svg-icons';
 
-import '../../scss/common/dropdown.scss';
+import './dropdown.scss';
 class Dropdown extends Component {
     constructor(props) {
         super(props);

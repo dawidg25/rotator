@@ -37,4 +37,14 @@ router.get('/', (req, res) => {
         res.status(ret.status).json(ret);
     })
 })
+
+router.get('/:id', (req, res) => {
+    Tome.findOne({_id: req.params.id}).then(doc => {
+        let ret = {
+            status: 200,
+            document: doc
+        };
+        res.status(ret.status).json(ret);
+    })
+})
 module.exports = router;

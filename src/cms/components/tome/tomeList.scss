@@ -3,7 +3,8 @@ section.tome-list {
     height: 100%;
     .top-row{
         font-weight: 500;
-        font-size: 95%;
+        font-size: 97%;
+        padding-bottom: 10px;
     }
     .title {
         width: 40%;
@@ -12,6 +13,9 @@ section.tome-list {
         width: 40%;
     }
     .created {
-        width: 20%;
+        width: calc(20% - 25px);
+    }
+    .action {
+        width: 25px;
     }
 }

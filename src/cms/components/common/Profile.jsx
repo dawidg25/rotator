@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {faUserCircle} from '@fortawesome/free-solid-svg-icons';
 import Dropdown from '../common/Dropdown';
 import auth from '../../../lib/Auth';
-import '../../scss/common/profile.scss';
+import './profile.scss';
 
 export default class Profile extends Component {
 	constructor(props) {

@@ -40,7 +40,7 @@ class Main extends Component {
                         <LeftBar />
                         <Route exact path={match.path} render={() => <Dashboard />} />
                         <Route exact path={match.path + '/tome'} render={() => <TomeWrapper />} />
-                        <Route exact path={match.path + '/tome/add'} render={() => <TomeModify />} />
+                        <Route exact path={[match.path + '/tome/modify/', match.path + '/tome/modify/:id']} render={() => <TomeModify />} />
                         <Route exact path={match.path + '/cv'} render={() => <Vitae />} />
                     </Router>
                 :

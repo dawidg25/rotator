@@ -1,0 +1,29 @@
+$borderColor: #e8e8e8;
+$ellipsisColor: #aaa;
+
+.tome-row {
+    padding: 7px 0;
+    margin: 0 15px;
+    &:not(:first-child) {
+        border-top: 1px solid $borderColor;
+    }
+    &:hover {
+        background-color: $borderColor;
+        border-radius: 20px;
+        margin: 0;
+        padding: 7px 15px;
+    }
+    .action {
+        text-align: right;
+    }
+    .dd-header {
+        justify-content: center;
+        svg{
+            color: $ellipsisColor;
+        }
+    }
+    .dd-list {
+        top: 100%;
+    }
+    
+}
