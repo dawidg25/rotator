@@ -61,4 +61,14 @@ router.post('/:id', (req, res) => {
         res.status(ret.status).json(ret);
     })
 })
+
+router.delete('/:id', (req, res) => {
+    Tome.findOneAndDelete({_id: req.params.id}).then(doc => {
+        let ret = utility.apiDocumentRemoved(doc);
+        res.status(ret.status).json(ret);
+    }).catch(err => {
+        let ret = utility.apiErrorResponse(err);
+        res.status(ret.status).json(ret);
+    })
+})
 module.exports = router;

@@ -23,7 +23,6 @@ var auth = {
     }
 }
 auth.verifyError = function(error) {
-    console.info(error);
     if(error.response.status === 403) {
         this.deleteUser();
         this.deleteToken();

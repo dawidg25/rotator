@@ -78,7 +78,6 @@ class TomeModify extends Component {
                                     headers: {'x-auth': auth.getToken()}
                                 }
                             ).then((res) => {
-                                console.log(res)
                                 notification.create(submit.successMsg, 'success');
                                 this.props.history.push('/cms/tome');
                             }).catch(error => {

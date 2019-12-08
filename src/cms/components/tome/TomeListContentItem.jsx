@@ -4,6 +4,9 @@ import {faEllipsisV} from '@fortawesome/free-solid-svg-icons'
 import Dropdown from '../common/Dropdown';
 import './tomeListContentItem.scss';
 import {withRouter} from 'react-router-dom';
+import axios from 'axios';
+import auth from '../../../lib/Auth';
+import notification from '../../lib/Notification';
 
 const other = new Other();
 
@@ -12,7 +15,7 @@ class TomeListContentItem extends Component {
 		super(props);
 		this.dropItems = [
             {text: 'Edit', call: e => this.editHandler(e)},
-            {text: 'Remove', call: e => this.removeHandler()},
+            {text: 'Remove', call: e => this.removeHandler(e)}
 		]
     }
     editHandler = (e) => {
@@ -21,7 +24,16 @@ class TomeListContentItem extends Component {
         this.props.history.push(`/cms/tome/modify/${tomeId}`);
     }
     removeHandler = (e) => {
-        console.log('remove');
+        const row = e.target.closest('.tome-row');
+        const tomeId = row.getAttribute('data-id');
+        axios.delete(`/api/tome/${tomeId}`, {
+            headers: {'x-auth': auth.getToken()}
+        }).then(res => {
+            notification.create('Tome was removed', 'success');
+            this.props.history.push('/cms/tome');
+        }).catch(err => {
+            auth.verifyError(err);
+        })
     }
     render() {
         return (
