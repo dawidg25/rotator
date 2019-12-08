@@ -29,7 +29,7 @@ router.post('/', authToken, (req, res) => {
 // })
 
 router.get('/', (req, res) => {
-    Tome.find({}).then(doc => {
+    Tome.find({}).sort({createDate: 'desc'}).then(doc => {
         let ret = {
             status: 200,
             document: doc
@@ -44,6 +44,20 @@ router.get('/:id', (req, res) => {
             status: 200,
             document: doc
         };
+        res.status(ret.status).json(ret);
+    })
+})
+
+router.post('/:id', (req, res) => {
+    Tome.findOneAndUpdate({_id: req.params.id}, {
+        title: req.body.title,
+        url: req.body.url,
+        modifyDate: Date.now()
+    }).then(doc => {
+        let ret = utility.apiDocumentCreated(doc);
+        res.status(ret.status).json(ret);
+    }).catch(err => {
+        let ret = utility.apiErrorResponse(err);
         res.status(ret.status).json(ret);
     })
 })
