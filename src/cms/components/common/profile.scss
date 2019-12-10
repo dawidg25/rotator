@@ -20,9 +20,6 @@ section.profile {
                 display: block;
             }
         }
-        svg: {
-            color: #fff;
-        }
     }
     .dd-header-icon {
         width: 100%;
@@ -31,5 +28,8 @@ section.profile {
     .dd-list {
         bottom: 0;
         left: calc(100% + 15px);
+    }
+    .dd-wrapper svg {
+        color: #fff;
     }
 }

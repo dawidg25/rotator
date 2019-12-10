@@ -24,6 +24,11 @@ class Dropdown extends Component {
             openList: !this.state.openList
         })
     }
+    closeList = () => {
+        this.setState({
+            openList: false
+        })
+    }
 
     render() {
         return (
@@ -47,7 +52,7 @@ class Dropdown extends Component {
                     <ul className="dd-list">
                         {this.props.items.map((item, index) => {
                             return (
-                                <li className="dd-list-item" key={index} onClick={item.call}>{item.text}</li>
+                                <li className="dd-list-item" key={index} onClick={(e) => {item.call(e); this.closeList()}}>{item.text}</li>
                             )
                         })}
                     </ul>

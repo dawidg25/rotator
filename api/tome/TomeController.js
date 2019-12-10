@@ -22,11 +22,6 @@ router.post('/', authToken, (req, res) => {
         res.status(ret.status).json(ret);
     });
 })
-// router.delete('/', (req, res) => {
-//     Tome.deleteMany({}).then( ok => {
-//         res.status(200).json(ok);
-//     })
-// })
 
 router.get('/', (req, res) => {
     Tome.find({}).sort({createDate: 'desc'}).then(doc => {
@@ -48,7 +43,7 @@ router.get('/:id', (req, res) => {
     })
 })
 
-router.post('/:id', (req, res) => {
+router.post('/:id', authToken, (req, res) => {
     Tome.findOneAndUpdate({_id: req.params.id}, {
         title: req.body.title,
         url: req.body.url,
@@ -62,7 +57,7 @@ router.post('/:id', (req, res) => {
     })
 })
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', authToken, (req, res) => {
     Tome.findOneAndDelete({_id: req.params.id}).then(doc => {
         let ret = utility.apiDocumentRemoved(doc);
         res.status(ret.status).json(ret);

@@ -20,6 +20,7 @@ a {
 
 .container {
     width: calc(100% - #{$navigationWidth});
+    max-height: 100%;
     box-sizing: border-box;
     background: $containerBackgroundColor;
     display: flex;
@@ -126,7 +127,7 @@ section.login-register {
 section.cms {
     display: flex;
     flex-wrap: wrap;
-    min-height: 100vh;
+    height: 100vh;
 }
 form {
     .action {

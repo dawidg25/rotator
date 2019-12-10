@@ -21,6 +21,7 @@
     "node-sass": "^4.12.0",
     "nodemon": "^1.19.3",
     "react": "^16.10.1",
+    "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^16.10.1",
     "react-load-script": "0.0.6",
     "react-onclickoutside": "^6.9.0",

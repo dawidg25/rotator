@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import NotificationItem from './NotificationItem';
-import '../../scss/notification.scss'
+import './notificationParent.scss';
 class NotificationParent extends Component {
     constructor(props) {
         super(props);

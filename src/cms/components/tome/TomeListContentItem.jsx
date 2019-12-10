@@ -30,7 +30,7 @@ class TomeListContentItem extends Component {
             headers: {'x-auth': auth.getToken()}
         }).then(res => {
             notification.create('Tome was removed', 'success');
-            this.props.history.push('/cms/tome');
+            this.props.updateHandler();
         }).catch(err => {
             auth.verifyError(err);
         })

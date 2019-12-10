@@ -14,7 +14,7 @@ export default class TomeList extends Component {
             documents: []
         }
     }
-    componentDidMount() {
+    getTomeList = () => {
         axios.get('/api/tome').then(res => {
             this.setState({
                 documents: res.data.document,
@@ -23,6 +23,17 @@ export default class TomeList extends Component {
         }).catch(err => {
             console.log(err);
         })
+    }
+    triggerUpdate = (e) => {
+        this.getTomeList();
+    }
+    componentDidUpdate (prevProps, prevState) {
+        if (prevState.documents.length !== this.state.documents.length) {
+            this.getTomeList()
+        }
+    }
+    componentDidMount() {
+        this.getTomeList()
     }
     render() {
         return (
@@ -36,8 +47,8 @@ export default class TomeList extends Component {
                     <div className="created"><span>Created</span></div>
                     <div className="action"></div>
                 </div>
-                    {this.state.isLoaded ?
-                        <TomeListContent data={this.state.documents} />
+                    {(this.state.isLoaded) ?
+                        <TomeListContent data={this.state.documents} updateHandler={e => this.triggerUpdate(e)}/>
                     :
                         <Loader />
                     }
