@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import {Text, View, StyleSheet} from '@react-pdf/renderer';
 
-import commonStyles from './commonStyles';
-
 const styles = StyleSheet.create({
     wrapper: {
 	   fontSize: '12',

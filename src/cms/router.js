@@ -12,6 +12,8 @@ import Login from './components/Login';
 import TomeWrapper from './components/tome/TomeWrapper';
 import TomeModify from './components/tome/TomeModify';
 
+import ChapterWrapper from './components/chapter/ChapterWrapper';
+
 import Vitae from './components/cv/wrapper'
 class Main extends Component {
     constructor(props) {
@@ -41,6 +43,7 @@ class Main extends Component {
                         <Route exact path={match.path} render={() => <Dashboard />} />
                         <Route exact path={match.path + '/tome'} render={() => <TomeWrapper />} />
                         <Route exact path={[match.path + '/tome/modify/', match.path + '/tome/modify/:id']} render={() => <TomeModify />} />
+                        <Route exact path={match.path + '/chapter'} render={() => <ChapterWrapper />} />
                         <Route exact path={match.path + '/cv'} render={() => <Vitae />} />
                     </Router>
                 :

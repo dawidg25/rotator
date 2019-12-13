@@ -17,11 +17,13 @@ const AuthController = require('./api/auth/AuthController');
 const OtherController = require('./api/other/OtherController');
 
 const TomeController = require('./api/tome/TomeController');
+const ChapterController = require('./api/chapter/chapter-controller');
 
 app.use('/api/user', UserController);
 app.use('/api/auth', AuthController);
 app.use('/api/other', OtherController);
 app.use('/api/tome', TomeController);
+app.use('/api/chapter', ChapterController);
 
 
 app.get('*', (req, res) => {

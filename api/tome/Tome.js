@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const TomeSchema = new mongoose.Schema({
     title: String,
     url: String,
-    active: {
+    isActive: {
         type: Boolean,
         default: true
     },
