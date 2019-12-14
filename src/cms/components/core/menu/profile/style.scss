@@ -1,0 +1,35 @@
+@import '../../../../scss/common';
+section.profile {
+    width: min-content;
+    margin: 0 auto;
+    margin-bottom: 8px;
+    .dd-wrapper {
+        &::before {
+            content: '';
+            width: 145%;
+            height: 113%;
+            background: $mainBgColorDarken;
+            position: absolute;
+            left: -6px;
+            top: -3px;
+            border-radius: 50px;
+            display: none;
+        }
+        &:hover, &.active {
+            &::before {
+                display: block;
+            }
+        }
+    }
+    .dd-header-icon {
+        width: 100%;
+        font-size: 27px;
+    }
+    .dd-list {
+        bottom: 0;
+        left: calc(100% + 15px);
+    }
+    .dd-wrapper svg {
+        color: #fff;
+    }
+}

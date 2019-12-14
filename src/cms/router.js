@@ -2,15 +2,15 @@ import React, {Component} from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import './scss/index.scss'
 
-import auth from '../lib/Auth';
-import LeftBar from './components/LeftBar';
+import auth from './utils/Auth';
+import LeftBar from './components/core/menu';
 import NotFound from './components/common/NotFound';
 
-import Dashboard from './components/Dashboard';
-import Login from './components/Login';
+import Dashboard from './components/dashboard';
+import Login from './components/login';
 
-import TomeWrapper from './components/tome/TomeWrapper';
-import TomeModify from './components/tome/TomeModify';
+import TomeWrapper from './components/tome';
+import TomeModify from './components/tome/modify';
 
 import ChapterWrapper from './components/chapter/ChapterWrapper';
 
