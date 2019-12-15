@@ -12,9 +12,19 @@ import Login from './components/login';
 import TomeWrapper from './components/tome';
 import TomeModify from './components/tome/modify';
 
-import ChapterWrapper from './components/chapter/ChapterWrapper';
+import ChapterWrapper from './components/chapter';
 
-import Vitae from './components/cv/wrapper'
+const routes = {
+    tome: {
+        root: 'tome',
+        modify: 'modify'
+    },
+    chapter: {
+        root: 'chapter',
+        modify: 'modify'
+    }
+}
+
 class Main extends Component {
     constructor(props) {
         super(props);
@@ -41,10 +51,9 @@ class Main extends Component {
                     <Router>
                         <LeftBar />
                         <Route exact path={match.path} render={() => <Dashboard />} />
-                        <Route exact path={match.path + '/tome'} render={() => <TomeWrapper />} />
-                        <Route exact path={[match.path + '/tome/modify/', match.path + '/tome/modify/:id']} render={() => <TomeModify />} />
-                        <Route exact path={match.path + '/chapter'} render={() => <ChapterWrapper />} />
-                        <Route exact path={match.path + '/cv'} render={() => <Vitae />} />
+                        <Route exact path={match.path + `/${routes.tome}`} render={() => <TomeWrapper />} />
+                        <Route exact path={[match.path + `/${routes.tome.root}/${routes.tome.modify}/`, match.path + `/${routes.tome.root}/${routes.tome.modify}/:id`]} render={() => <TomeModify />} />
+                        <Route exact path={match.path + `/${routes.chapter.root}`} render={() => <ChapterWrapper />} />
                     </Router>
                 :
                     <Router>

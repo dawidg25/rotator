@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
-import ChapterList from './ChapterList';
+import Button from '../core/button';
+// import './style.scss';
 
 export default class ChapterWrapper extends Component {
-    render () {
+    render() {
         return (
             <section className="chapter-wrapper container">
-                <ChapterList />
+                {/* <TomeList /> */}
+                <Button type={'add'} href={'/cms/tome/modify'} />
             </section>
         )
     }
