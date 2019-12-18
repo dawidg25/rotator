@@ -13,6 +13,7 @@ import TomeWrapper from './components/tome';
 import TomeModify from './components/tome/modify';
 
 import ChapterWrapper from './components/chapter';
+import ChapterModify from './components/chapter/modify';
 
 const routes = {
     tome: {
@@ -51,9 +52,10 @@ class Main extends Component {
                     <Router>
                         <LeftBar />
                         <Route exact path={match.path} render={() => <Dashboard />} />
-                        <Route exact path={match.path + `/${routes.tome}`} render={() => <TomeWrapper />} />
+                        <Route exact path={match.path + `/${routes.tome.root}`} render={() => <TomeWrapper />} />
                         <Route exact path={[match.path + `/${routes.tome.root}/${routes.tome.modify}/`, match.path + `/${routes.tome.root}/${routes.tome.modify}/:id`]} render={() => <TomeModify />} />
                         <Route exact path={match.path + `/${routes.chapter.root}`} render={() => <ChapterWrapper />} />
+                        <Route exact path={[match.path + `/${routes.chapter.root}/${routes.chapter.modify}/`, match.path + `/${routes.chapter.root}/${routes.chapter.modify}/:id`]} render={() => <ChapterModify />} />
                     </Router>
                 :
                     <Router>

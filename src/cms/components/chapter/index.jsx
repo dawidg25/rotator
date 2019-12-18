@@ -7,7 +7,7 @@ export default class ChapterWrapper extends Component {
         return (
             <section className="chapter-wrapper container">
                 {/* <TomeList /> */}
-                <Button type={'add'} href={'/cms/tome/modify'} />
+                <Button type={'add'} href={'/cms/chapter/modify'} />
             </section>
         )
     }

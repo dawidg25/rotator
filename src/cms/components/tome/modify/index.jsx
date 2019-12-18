@@ -10,8 +10,8 @@ import Loader from '../../core/loader';
 import './style.scss';
 
 const formFields = [
-    {type: 'text', name: 'title', label: 'Title', value: 'asdf'},
-    {type: 'text', name: 'url', label: 'Url'},
+    {element: 'input', type: 'text', name: 'title', label: 'Title'},
+    {element: 'input', type: 'text', name: 'url', label: 'Url'}
 ]
 
 const validSchema = Yup.object().shape({
@@ -88,16 +88,19 @@ class TomeModify extends Component {
                     
                     {props => (
                         <form onSubmit={props.handleSubmit}>
-                        {formFields.map((input, index) => {
-                            return <InputField 
-                                {...input}
-                                key={index} 
-                                value={props.values[input.name]}
-                                onChange={props.handleChange}
-                                touched={props.touched[input.name]}
-                                onBlur={props.handleBlur}
-                                errors={props.errors[input.name]}
-                            />
+                        {formFields.map((field, index) => {
+                            return (
+                                
+                                <InputField 
+                                    {...field}
+                                    key={index} 
+                                    value={props.values[field.name]}
+                                    onChange={props.handleChange}
+                                    touched={props.touched[field.name]}
+                                    onBlur={props.handleBlur}
+                                    errors={props.errors[field.name]}
+                                />
+                            )
                         })}
                         <div className="action">
                             <button className="cancel" onClick={this.cancelHandler}>Cancel</button>

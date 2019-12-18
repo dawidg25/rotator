@@ -43,6 +43,18 @@ router.get('/:id', (req, res) => {
     })
 })
 
+router.get('/active', (req, res) => {
+    Tome.find({active: true}).then(doc => {
+        let ret = {
+            status: 200,
+            document: doc
+        };
+        res.status(ret.status).json(ret);
+    }).catch(queryError => {
+        console.log(queryError);
+    })
+})
+
 router.post('/:id', authToken, (req, res) => {
     Tome.findOneAndUpdate({_id: req.params.id}, {
         title: req.body.title,

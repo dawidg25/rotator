@@ -61,11 +61,12 @@ button {
 */
 .form-group {
     display: flex;
-    margin: 6px 0;
+    margin: 12px 0;
     position: relative;
     label {
         margin-right: 8px;
-        width: 120px;
+        display: inline-table;
+        width: 70px;
     }
     input {
         background: transparent;
@@ -76,6 +77,12 @@ button {
         box-sizing: border-box;
         padding: 0 5px;
         font-size: $mainFontSize;
+    }
+    select {
+        width: 100%;
+        border: 1px solid $borderColor;
+        padding: 5px;
+        border-radius: 3px;
     }
     .icon {
         position: absolute;

@@ -17,7 +17,7 @@ const AuthController = require('./api/auth/AuthController');
 const OtherController = require('./api/other/OtherController');
 
 const TomeController = require('./api/tome/TomeController');
-const ChapterController = require('./api/chapter/chapter-controller');
+const ChapterController = require('./api/chapter/ChapterController');
 
 app.use('/api/user', UserController);
 app.use('/api/auth', AuthController);

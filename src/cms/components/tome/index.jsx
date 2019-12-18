@@ -8,7 +8,7 @@ export default class TomeWrapper extends Component {
         return (
             <section className="tome-wrapper container">
                 <TomeList />
-                <Button type={'add'} href={'/cms/tome/modify'} />
+                <Button type='add' href={'/cms/tome/modify'} />
             </section>
         )
     }
