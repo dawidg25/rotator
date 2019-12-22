@@ -10,20 +10,11 @@ import {withRouter} from 'react-router-dom';
 import Loader from '../../core/loader';
 import './style.scss';
 
-const selectOptions = [
-    {value: 1, text: 'Opcja 1'},
-    {value: 2, text: 'Opcja 2'},
-]
-
-const formFields = [
-    {element: 'input', type: 'text', name: 'title', label: 'Title'},
-    {element: 'input', type: 'text', name: 'url', label: 'Url'},
-    {element: 'select', name: 'tome', label: 'Tome', options: selectOptions}
-]
+let formFields = [];
 
 const validSchema = Yup.object().shape({
     title: Yup.string().required(),
-    url: Yup.string().required().trim()
+    url: Yup.string().required(),
 });
 
 class chapterModify extends Component {
@@ -32,30 +23,40 @@ class chapterModify extends Component {
         this.state = {
             isNew: this.props.match.params.id === undefined,
             isLoaded: false,
-            data: {
+            formDefaults: {
                 title: '',
                 url: '',
-                // tome: ''
+                tome: ''
             }
         }
         this.id = this.state.isNew ? null : this.props.match.params.id;
+        this.tomeCollection = [];
+        
     }
     cancelHandler = () => {
         this.props.history.push('/cms/chapter');
     }
-
+    
     componentDidMount () {
-        // if (!this.state.isNew) {
-        //     axios.get(`/api/chapter/${this.id}`).then(res => {
-        //         this.setState({data: res.data.document, isLoaded: true});
+        axios.get('/api/tome').then(res => {
+            res.data.document.map((tome, index) => {
+                this.tomeCollection.push({value: tome._id, label: tome.title});
+                return null;
+            })
 
-        //     })
-        // }
-        axios.get('/api/tome/active').then(res => {
-            console.log(res);
+            formFields = [
+                {element: 'input', type: 'text', name: 'title', label: 'Title'},
+                {element: 'input', type: 'text', name: 'url', label: 'Url'},
+                {element: 'select', name: 'tome', label: 'Tome', options: this.tomeCollection}
+            ]
+            let updatedFormDefaults = {title: '', url: '', tome: this.tomeCollection[0].value};
+            this.setState({formDefaults: updatedFormDefaults, isLoaded: true});
         }).catch(err => {
             console.error(err);
         })
+    }
+    componentWillUnmount() {
+        formFields = [];
     }
 
     render() {
@@ -63,31 +64,23 @@ class chapterModify extends Component {
             <section className="chapter-modify container">
                 <div className="modify sub-container">
                 <h2>{this.state.isNew ? 'Create' : 'Edit'} chapter</h2>
-                    {(!this.state.isLoaded && !this.state.isNew) ? 
+                    {(!this.state.isLoaded) ? 
                         <Loader />
                     :
                     <Formik
                         enableReinitialize
-                        initialValues={this.state.data ? this.state.data : ''}
+                        initialValues={this.state.formDefaults ? this.state.formDefaults : ''}
                         validationSchema={validSchema}
                         onSubmit={(values) => {
-                            console.log('elo');
-                            return console.log(values);
                             let submit = {
                                 path: '/api/chapter',
                                 successMsg: `New chapter is created`
                             }
-                            if (!this.state.isNew) {
-                                submit = {
-                                    path:  `/api/chapter/${this.id}`,
-                                    successMsg: 'chapter successfully edited'
-                                }
-                            }
-
                             axios.post(submit.path,
                                 {
                                     title: values.title,
-                                    url: values.url
+                                    url: values.url,
+                                    tome: values.tome
                                 },
                                 {
                                     headers: {'x-auth': auth.getToken()}

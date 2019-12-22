@@ -5,7 +5,7 @@ const ChapterSchema = new mongoose.Schema({
     title: String,
     description: String,
     url: String,
-    isActive: {
+    active: {
         type: Boolean,
         default: true
     },

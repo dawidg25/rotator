@@ -14,10 +14,10 @@ export default class Select extends Component {
                     </div>
                 }
     
-                <select name={this.props.name} id={this.props.name} onChange={this.props.onChange} onBlur={this.props.onBlur}>
+                <select name={this.props.name} id={this.props.name} onChange={this.props.onChange} onBlur={this.props.onBlur} value={this.props.value}>
                     {this.props.options.map((option, index) => {
                         return (
-                            <option value={option.value} key={index} selected>{option.text}</option>
+                            <option value={option.value} key={index}>{option.label}</option>
                         )
                     })}
                 </select>

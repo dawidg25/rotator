@@ -8,4 +8,27 @@ const router = express.Router();
 router.use(bodyParser.urlencoded({extended: true}));
 router.use(bodyParser.json());
 
+router.post('/', authToken, (req, res, err) => {
+    console.log(req.body);
+    Chapter.create({
+        parentId: req.body.tome,
+        title: req.body.title,
+        url: req.body.url,
+    }).then(doc => {
+        let ret = utility.apiDocumentCreated(doc);
+        res.status(ret.status).json(ret);
+    }).catch(err => {
+        let ret = utility.apiErrorResponse(err);
+        res.status(ret.status).json(ret);
+    });
+})
+router.get('/', (req, res) => {
+    Chapter.find({}).sort({createDate: 'desc'}).then(doc => {
+        let ret = {
+            status: 200,
+            document: doc
+        };
+        res.status(ret.status).json(ret);
+    })
+})
 module.exports = router;

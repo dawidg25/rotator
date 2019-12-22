@@ -1,0 +1,31 @@
+section.chapter-list {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    .header {
+        flex-shrink: 0;
+    }
+    .top-row{
+        font-weight: 500;
+        font-size: 97%;
+        padding-bottom: 10px;
+        padding: 7px 15px;
+        flex-shrink: 0;
+    }
+    .content {
+        overflow-y: auto
+    }
+    .title {
+        width: 40%;
+    }
+    .url {
+        width: 40%;
+    }
+    .created {
+        width: calc(20% - 25px);
+    }
+    .action {
+        width: 25px;
+    }
+}

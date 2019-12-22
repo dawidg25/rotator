@@ -3,7 +3,7 @@ import axios from 'axios';
 import './style.scss';
 import '../../core/loader';
 import Loader from '../../core/loader';
-import TomeListContent from './content';
+import ListContent from './content';
 
 export default class TomeList extends Component {
     constructor(props) {
@@ -14,32 +14,33 @@ export default class TomeList extends Component {
             documents: []
         }
     }
-    getTomeList = () => {
-        axios.get('/api/tome').then(res => {
+    getList = () => {
+        axios.get('/api/chapter').then(res => {
             this.setState({
                 documents: res.data.document,
                 isLoaded: true
             })
+            // console.log(this.state.documents);
         }).catch(err => {
             console.log(err);
         })
     }
     triggerUpdate = (e) => {
-        this.getTomeList();
+        this.getList();
     }
     componentDidUpdate (prevProps, prevState) {
         if (prevState.documents.length !== this.state.documents.length && prevState.documents.length > 0) {
-            this.getTomeList()
+            this.getList()
         }
     }
     componentDidMount() {
-        this.getTomeList()
+        this.getList()
     }
     render() {
         return (
-            <section className="tome-list sub-container">
+            <section className="chapter-list sub-container">
                 <div className="header">
-                    <h2>Tome list</h2>
+                    <h2>Chapter list</h2>
                 </div>
                 <div className="top-row row">
                     <div className="title"><span>Title</span></div>
@@ -48,7 +49,7 @@ export default class TomeList extends Component {
                     <div className="action"></div>
                 </div>
                     {(this.state.isLoaded) ?
-                        <TomeListContent data={this.state.documents} updateHandler={e => this.triggerUpdate(e)}/>
+                        <ListContent data={this.state.documents} updateHandler={e => this.triggerUpdate(e)}/>
                     :
                         <Loader />
                     }
