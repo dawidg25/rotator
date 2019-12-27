@@ -11,6 +11,7 @@ class TomeModify extends Component {
         this.state = {
             isNew: this.props.match.params.id === undefined,
             isLoaded: false,
+            isFounded: true,
             data: {
                 title: '',
                 url: ''
@@ -32,21 +33,38 @@ class TomeModify extends Component {
 
     getTomeData = () => {
         axios.get(`/api/tome/${this.id}`).then(res => {
-            this.setState({data: res.data.document, isLoaded: true});
+            let isFounded = res.data.document !== null;
+            this.setState({data: res.data.document, isLoaded: true, isFounded: isFounded});
         })
+    }
+
+    detailsComponent = () => {
+        return <TomeDetailsForm isNew={this.state.isNew} id={this.id} initData={this.state.data} updateIsNewState={this.updateIsNewState} />
+    }
+
+    conditionalComponents = () => {
+        if (this.state.isNew) {
+            return this.detailsComponent()
+        } else {
+            if (!this.state.isLoaded) {
+                return <Loader /> 
+            } else if (this.state.isLoaded && !this.state.isFounded) {
+                return <h1>Not found</h1>
+            } else {
+                return this.renderComponents();
+            }
+        }
+    }
+    renderComponents = () => {
+        return (
+            this.detailsComponent()
+        )
     }
 
     render() {
         return (
             <section className="tome-modify container">
-                <div className="modify sub-container">
-                <h2>{this.state.isNew ? 'Create' : 'Edit'} tome</h2>
-                    {(!this.state.isLoaded && !this.state.isNew) ? 
-                        <Loader />
-                    :
-                        <TomeDetailsForm isNew={this.state.isNew} id={this.id} initData={this.state.data} updateIsNewState={this.updateIsNewState} />
-                    }
-                </div>
+                {this.conditionalComponents()}
             </section>
         )
     }

@@ -57,38 +57,41 @@ class TomeDetailsForm extends Component {
     }
     render() {
         return (
-            <Formik
-                enableReinitialize
-                initialValues={this.props.initData ? this.props.initData : ''}
-                validationSchema={validSchema}
-                onSubmit={(values) => this.handleSubmit(values)}
-            >
-                    
-            {props => (
-                <form onSubmit={props.handleSubmit}>
-                {formFields.map((field, index) => {
-                    return (
+            <div className="modify sub-container">
+                <h2>{this.props.isNew ? 'Create' : 'Edit'} tome</h2>
+                <Formik
+                    enableReinitialize
+                    initialValues={this.props.initData ? this.props.initData : ''}
+                    validationSchema={validSchema}
+                    onSubmit={(values) => this.handleSubmit(values)}
+                >
                         
-                        <InputField 
-                            {...field}
-                            key={index} 
-                            value={props.values[field.name]}
-                            onChange={props.handleChange}
-                            touched={props.touched[field.name]}
-                            onBlur={props.handleBlur}
-                            errors={props.errors[field.name]}
-                        />
-                    )
-                })}
-                <div className={this.props.isNew ? 'action double' : 'action single'}>
-                    {this.props.isNew &&
-                        <button className="cancel" onClick={this.cancelHandler}>Cancel</button>
-                    }
-                    <button type="submit">Save</button>    
-                </div>
-            </form>
-            )}
-            </Formik>
+                {props => (
+                    <form onSubmit={props.handleSubmit}>
+                    {formFields.map((field, index) => {
+                        return (
+                            
+                            <InputField 
+                                {...field}
+                                key={index} 
+                                value={props.values[field.name]}
+                                onChange={props.handleChange}
+                                touched={props.touched[field.name]}
+                                onBlur={props.handleBlur}
+                                errors={props.errors[field.name]}
+                            />
+                        )
+                    })}
+                    <div className={this.props.isNew ? 'action double' : 'action single'}>
+                        {this.props.isNew &&
+                            <button className="cancel" onClick={this.cancelHandler}>Cancel</button>
+                        }
+                        <button type="submit">Save</button>    
+                    </div>
+                </form>
+                )}
+                </Formik>
+            </div>
         )
     }
 }

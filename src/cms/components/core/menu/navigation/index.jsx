@@ -17,7 +17,6 @@ export default class Navigation extends Component {
                 {modules.map((module, index) => {
                     let additionalProps = {};
                     if (module.path === '') {additionalProps.exact = true}
-                    console.log(additionalProps);
                     return (
                         <NavLink {...additionalProps} to={'/cms' + module.path} activeClassName='selected' key={index}>
                             <FontAwesomeIcon icon={module.icon} />
