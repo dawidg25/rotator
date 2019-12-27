@@ -38,6 +38,7 @@ class chapterModify extends Component {
     }
     
     componentDidMount () {
+        console.log(this.state.isNew);
         axios.get('/api/tome').then(res => {
             res.data.document.map((tome, index) => {
                 this.tomeCollection.push({value: tome._id, label: tome.title});

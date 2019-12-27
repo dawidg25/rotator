@@ -9,11 +9,11 @@ router.use(bodyParser.urlencoded({extended: true}));
 router.use(bodyParser.json());
 
 router.post('/', authToken, (req, res, err) => {
-    console.log(req.body);
     Chapter.create({
         parentId: req.body.tome,
         title: req.body.title,
         url: req.body.url,
+        createDate: Date.now()
     }).then(doc => {
         let ret = utility.apiDocumentCreated(doc);
         res.status(ret.status).json(ret);
@@ -31,4 +31,7 @@ router.get('/', (req, res) => {
         res.status(ret.status).json(ret);
     })
 })
+// router.get('/:id', (req, res, err) => {
+//     Chapter.find({})
+// })
 module.exports = router;

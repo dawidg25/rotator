@@ -36,6 +36,7 @@ class ChapterListContentItem extends Component {
         })
     }
     render() {
+        console.log(this.props.data);
         return (
             <div className="chapter-row row" data-id={this.props.data._id}>
                 <div className="title"><span>{this.props.data.title}</span></div>

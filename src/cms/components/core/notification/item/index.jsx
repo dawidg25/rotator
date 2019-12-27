@@ -40,9 +40,12 @@ export default class NotificationItem extends React.Component {
             })
         }, 3000)
     }
+    closeNotification = () => {
+        this.setState({visible: false})
+    }
     render() {
         return this.state.visible ? 
-            <div className={`notification-content ${this.props.type}` + (this.state.fade ? ' fade' : '')}>
+            <div className={`notification-content ${this.props.type}` + (this.state.fade ? ' fade' : '')} onClick={this.closeNotification} >
                 <div className="icon">
                     <FontAwesomeIcon icon={iconMap[this.props.type]} />
                 </div>
