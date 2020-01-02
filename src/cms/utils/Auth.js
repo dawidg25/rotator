@@ -31,7 +31,7 @@ auth.verifyError = function(error) {
         if(error.response.data.errors.url){
             return notification.create('Url is already used', 'error');
         }
-        notification.create('Something go wrong', 'error');
+        return notification.create('Something go wrong', 'error');
     }
 }
 auth.getUserId = function() {

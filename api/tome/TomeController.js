@@ -30,7 +30,7 @@ router.get('/', (req, res) => {
             document: doc
         };
         res.status(ret.status).json(ret);
-    })
+    }).catch(err => console.log(err));
 })
 
 router.get('/:id', (req, res) => {
@@ -40,7 +40,7 @@ router.get('/:id', (req, res) => {
             document: doc
         };
         res.status(ret.status).json(ret);
-    })
+    }).catch(err => console.log(err));
 })
 
 router.post('/:id', authToken, (req, res) => {
