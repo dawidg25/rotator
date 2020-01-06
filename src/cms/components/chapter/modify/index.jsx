@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import ChapterDetail from './detail';
+import AttachmentAdd from './attachment/add';
+import AttachmentList from './attachment/list';
 
 class ChapterModify extends Component {
     constructor(props) {
@@ -25,6 +27,8 @@ class ChapterModify extends Component {
         return (
             <React.Fragment>
                 {this.detailsComponent()}
+                <AttachmentAdd />
+                <AttachmentList />
             </React.Fragment>
         )
     }

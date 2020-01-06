@@ -1,0 +1,11 @@
+section.attachment-add {
+    margin-left: 15px;
+    height: 255px;
+    .dropzone {
+        width: 100%;
+        height: calc(100% - 40px);
+        border: 2px dashed grey;
+        box-sizing: border-box;
+        padding: 15px;
+    }
+}
