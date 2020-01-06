@@ -16,10 +16,22 @@ router.get('/', (req, res) => {
         };
         res.status(ret.status).json(ret);
     }).catch(err => {
-        let ret = utility.apiErrorResponse(err);
-        res.status(ret.status).json(ret);
+        console.log(err);
     });
 })
+
+router.get('/all', (req, res) => {
+    Chapter.find({}).populate('parentId').sort({createDate: 'desc'}).then(doc => {
+        let ret = {
+            status: 200,
+            document: doc
+        };
+        res.status(ret.status).json(ret);
+    }).catch(err => {
+        console.log(err);
+    });
+})
+
 router.get('/:id', (req, res) => {
     Chapter.findOne({_id: req.params.id}).then(doc => {
         let ret = {

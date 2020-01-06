@@ -15,12 +15,12 @@ export default class TomeList extends Component {
         }
     }
     getList = () => {
-        axios.get('/api/chapter').then(res => {
+        axios.get('/api/chapter/all').then(res => {
             this.setState({
                 documents: res.data.document,
                 isLoaded: true
             })
-            // console.log(this.state.documents);
+            console.log(this.state.documents);
         }).catch(err => {
             console.log(err);
         })
@@ -45,6 +45,7 @@ export default class TomeList extends Component {
                 <div className="top-row row">
                     <div className="title"><span>Title</span></div>
                     <div className="url"><span>Url</span></div>
+                    <div className="tome"><span>Tome</span></div>
                     <div className="created"><span>Created</span></div>
                     <div className="action"></div>
                 </div>

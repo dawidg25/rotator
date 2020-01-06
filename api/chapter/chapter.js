@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
 
 const ChapterSchema = new mongoose.Schema({
-    parentId: mongoose.Schema.Types.ObjectId,
+    parentId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Tome'
+    },
     title: String,
     description: String,
     url: String,

@@ -9,20 +9,6 @@ router.use(bodyParser.json());
 
 const Tome = require('./Tome');
 
-router.post('/', authToken, (req, res) => {
-    Tome.create({
-        title: req.body.title,
-        url: req.body.url,
-        createDate: Date.now()
-    }).then(doc => {
-        let ret = utility.apiDocumentCreated(doc);
-        res.status(ret.status).json(ret);
-    }).catch(err => {
-        let ret = utility.apiErrorResponse(err);
-        res.status(ret.status).json(ret);
-    });
-})
-
 router.get('/', (req, res) => {
     Tome.find({}).sort({createDate: 'desc'}).then(doc => {
         let ret = {
@@ -43,6 +29,20 @@ router.get('/:id', (req, res) => {
     }).catch(err => console.log(err));
 })
 
+router.post('/', authToken, (req, res) => {
+    Tome.create({
+        title: req.body.title,
+        url: req.body.url,
+        createDate: Date.now()
+    }).then(doc => {
+        let ret = utility.apiDocumentCreated(doc);
+        res.status(ret.status).json(ret);
+    }).catch(err => {
+        let ret = utility.apiErrorResponse(err);
+        res.status(ret.status).json(ret);
+    });
+})
+
 router.post('/:id', authToken, (req, res) => {
     Tome.findOneAndUpdate({_id: req.params.id}, {
         title: req.body.title,
@@ -50,6 +50,16 @@ router.post('/:id', authToken, (req, res) => {
         modifyDate: Date.now()
     }).then(doc => {
         let ret = utility.apiDocumentCreated(doc);
+        res.status(ret.status).json(ret);
+    }).catch(err => {
+        let ret = utility.apiErrorResponse(err);
+        res.status(ret.status).json(ret);
+    })
+})
+
+router.delete('/', authToken, (req, res) => {
+    Tome.deleteMany({}).then(doc => {
+        let ret = utility.apiDocumentRemoved(doc);
         res.status(ret.status).json(ret);
     }).catch(err => {
         let ret = utility.apiErrorResponse(err);

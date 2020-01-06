@@ -17,10 +17,13 @@ section.chapter-list {
         overflow-y: auto
     }
     .title {
-        width: 40%;
+        width: 30%;
     }
     .url {
-        width: 40%;
+        width: 30%;
+    }
+    .tome {
+        width: 20%;
     }
     .created {
         width: calc(20% - 25px);

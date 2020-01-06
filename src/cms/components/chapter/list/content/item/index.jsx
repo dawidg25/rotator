@@ -40,6 +40,7 @@ class ChapterListContentItem extends Component {
             <div className="chapter-row row" data-id={this.props.data._id}>
                 <div className="title"><span>{this.props.data.title}</span></div>
                 <div className="url"><span>{this.props.data.url}</span></div>
+                <div className="tome"><span>{this.props.data.parentId.title}</span></div>
                 <div className="created"><span>{other.parseFullDate(this.props.data.createDate)}</span></div>
                 <div className="action">
                     <Dropdown icon={faEllipsisV} items={this.dropItems} />
