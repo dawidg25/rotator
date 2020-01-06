@@ -1,0 +1,8 @@
+section.detail {
+    width: 350px;
+    max-width: 100%;
+    height: 215px;
+    &.chapter-detail {
+        height: 255px;
+    }
+}

@@ -72,6 +72,8 @@ class TomeDetail extends Component {
     componentDidMount () {
         if (!this.props.isNew) {
             this.getTomeData();
+        } else {
+            this.setState({isLoaded: true})
         }
     }
     componentDidUpdate () {
