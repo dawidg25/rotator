@@ -1,15 +1,31 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {useDropzone} from 'react-dropzone';
+import axios from 'axios';
+import auth from '../../../../../utils/Auth';
+import notification from '../../../../../utils/Notification';
 import './style.scss';
 
 function AttachmentAdd(props) {
-	const {acceptedFiles, getRootProps, getInputProps} = useDropzone();
+	const {getRootProps, getInputProps} = useDropzone({
+		accept: 'image/*',
+		onDrop: acceptedFiles => {
+			acceptedFiles.map(file => {
+				const data = new FormData();
+				data.append('file', file);
+				fileUploadHandler(data);
+			});
+		}
+	});
 
-	const files = acceptedFiles.map(file => (
-	<li key={file.path}>
-		{file.path} - {file.size} bytes
-	</li>
-	));
+	function fileUploadHandler(data) {
+		axios.post(`/api/chapter/${props.id}/upload`, data, {
+			headers: {'x-auth': auth.getToken()}
+		}).then(res => {
+			notification.create('Attachment added', 'success');
+		}).catch(err => {
+			notification.create('Problem with adding attachment', 'error');
+		})
+	}
 
 	return (
 		<section className="attachment-add sub-container">
@@ -18,10 +34,6 @@ function AttachmentAdd(props) {
 				<input {...getInputProps()} />
 				<p>Drag 'n' drop some files here, or click to select files</p>
 			</div>
-			{/* <aside>
-			<h4>Files</h4>
-			<ul>{files}</ul>
-			</aside> */}
 		</section>
 	);
 }

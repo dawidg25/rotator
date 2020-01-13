@@ -20,7 +20,6 @@ export default class TomeList extends Component {
                 documents: res.data.document,
                 isLoaded: true
             })
-            console.log(this.state.documents);
         }).catch(err => {
             console.log(err);
         })

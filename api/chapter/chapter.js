@@ -8,6 +8,7 @@ const ChapterSchema = new mongoose.Schema({
     title: String,
     description: String,
     url: String,
+    attachment: Array,
     active: {
         type: Boolean,
         default: true

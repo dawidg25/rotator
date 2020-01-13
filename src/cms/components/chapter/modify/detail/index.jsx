@@ -66,6 +66,7 @@ class ChapterDetail extends Component {
     }
     getChapterData = () => {
         axios.get(`/api/chapter/${this.id}`).then(res => {
+            console.log(res.data.document);
             this.setState({data: res.data.document});
         }).catch(err => {
             auth.verifyError(err);

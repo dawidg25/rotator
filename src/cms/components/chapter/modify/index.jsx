@@ -27,7 +27,7 @@ class ChapterModify extends Component {
         return (
             <React.Fragment>
                 {this.detailsComponent()}
-                <AttachmentAdd />
+                <AttachmentAdd id={this.props.match.params.id}/>
                 <AttachmentList />
             </React.Fragment>
         )
